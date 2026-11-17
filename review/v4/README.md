@@ -14,7 +14,7 @@
 - **Boss bar**: `THE HOLLOW CROWN` — violet→magenta gradient bar, gold 25/75 ticks, shown only while the boss lives (new trailing optional arg to `HUD.draw`).
 - **Score popups**: `+N` floaters on every kill/boss death (`Orbitron 20px`, rise + fade, 0.9 s).
 - **Rising embers** on title / victory / gameover (35 % chance per frame via the particle system).
-- **Background**: horizon haze glow band, neon rain streaks, blinking rooftop beacons on the mid skyline.
+- **Background polish was NOT in v4.** The Gemini 04-53 session had implemented horizon haze + neon rain + rooftop beacons in `game/src/background.js`, but a later failed session left the working tree reverted for that file; it was never re-added, never committed, and **is absent from `c7bb7bd`**. The shipped background is the v3 one (skyline + sun + grid). It has been re-implemented locally on 2026-11-17T05:45Z **after** submission (unverified-for-entry, screenshots re-taken) and is what a possible v5 would carry.
 - Fallback text fonts swapped from Courier New to Orbitron (the headless judge has no Courier New).
 - Fix in the same arc: explicit `document.fonts.load()` + re-render — the first painted frame used to precede font decode and kept the serif fallback (title looked broken in the shot harness).
 
@@ -43,10 +43,11 @@ Read it like this:
 
 Output: a `DIRECTOR QUESTION:`-style reply **on this PR** (or a spec under `missions/M11-…` if it grows into one). **Spec language, not paste-ready patches** (DIRECTIVES §3). Ground rules fully apply: no secrets, no assets beyond the repo, deadline real, implementing agent ships code in recorded sessions.
 
-1. **Bug hunt on v4** — read `v4-code.diff` with the screenshots. Specific suspected weak spots, ranked by damage done to the *contact sheet* (the judge never plays):
+1. **Bug hunt on v4** — read `v4-code.diff` with the screenshots. Note: the diff is ground truth; any claim of background haze/rain/beacons in the shipped commit is wrong (see the correction above). The screenshots in this folder are the post-submission re-takes that include the local re-implementation. Specific suspected weak spots, ranked by damage done to the *contact sheet* (the judge never plays):
    - Victory screen composition: cover at α 0.52 + dark overlay + grid behind it — there is a visible horizontal banding artifact around the wordmark (see `4-victory.jpg`). Is that banding unacceptable, and if so what's the spec-level fix (composition, alpha, gradient, crop)?
    - The title's fallback path (cover not yet decoded) draws legacy layout text; is a brief flash of fallback ever visible in the 4 judged shots, or is the explicit `document.fonts.load` + re-render good enough?
    - `HUD.draw(..., boss)` trailing optional arg — any risk the grader's outline parse misreads it? (Outline shows first declarations only.)
+   - The v4 submission lost its `background.js` changes to tooling churn: what review process would have caught that before commit? (For v5: `git status` + `git diff --stat` immediately before `git add -A`, and `makefun check`'s snapshot diff as a backstop.)
    - Rain streaks alpha 0.06–0.15 — visible or noise at contact-sheet scale? Beacons indices hardcoded (`[2,3,5,8,11,14]`) — do they land on building middles in frame?
    - Popups use `this.enemies.boss.hp` when boss dies → boss removed from `this` in the same branch; confirm no stale read, no NaN path.
    - `ember-wing-cover.jpg` ~108 KB + fonts ~90 KB: snapshot 698 KB total — fine vs caps; any judge optics risk from AI-generated art (originality/authenticity wording in README)?
