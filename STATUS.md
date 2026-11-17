@@ -32,3 +32,13 @@ _Last updated by the director, 2026-11-17T04:10Z._
 
 - Local clones lose `.git` between sessions; binary installs (chromium, extracted Node 22) vanish. `/home/user` text files persist. The kit tarball + `node22.tar.xz` are the recovery anchors; GitHub is the source of truth.
 - `~/.gemini` session logs can vanish; keep bundled transcripts backed up (done in the private vault).
+
+## 2026-11-17T05:21Z — v4 « key art + identity » submitted (round 4)
+
+- Commit `c7bb7bd` — cover AI (SDXL-Turbo, Kaggle kernel), Monoton/Orbitron (OFL, in-repo), ember lives, Hollow Crown boss bar, score popups, rising embers, horizon haze, neon rain, rooftop beacons, Orbitron fallback swap.
+- Submission `01a1e7f4-4935-725b-bcd9-e86056e11616` (title shown publicly: "Ember Wing"), HTTP 202, signed entry message, 8-session bundle (v3's 5 + v4's 3), `makefun check` 13/0, claim code in vault.
+- **Dev heat (provisional, vs fixed house images, never weighed)**: expected **64.8069 %** (3 W / 3 D / 6 L, 90 % interval 59.71–69.91) vs v3's **68.8505 %** (7 W / 0 D / 5 L). Delta inside the interval — not a measured regression; both v3 and v4 are outside the provisional reward cut-off (~93 %).
+- **Final heat re-judges every entry from scratch after 2026-11-18T18:10Z** (playoff → Bradley–Terry → top-5 review); result due **2026-12-03T06:10Z**. The last entry before the deadline is what counts: **v4 is the entry of record**.
+- **Correction (2026-11-17T05:45Z)**: the neon rain / horizon haze / rooftop beacons mentioned above were NOT part of the submitted v4 (`background.js` changes were lost in Gemini churn; never committed). They were re-implemented locally after submission (screenshots re-taken, zero console errors); v4 as judged = v3 background + cover/fonts/HUD/popups. For a possible v5, re-include them and verify `git diff --stat` before commit.
+- Quota: 1 left today (resets 2026-11-18T00:00Z); 6 of 10 total.
+- See `review/v4/README.md` — analysis request sent to Luna (bugs, in-rules polish, ship/freeze/revert call). Last submission-time advice: freeze unless Luna finds contact-sheet-level breakage.
