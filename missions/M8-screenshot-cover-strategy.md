@@ -13,7 +13,7 @@ The judge sees ONE contact sheet: the first screenshot is the cover. Currently: 
 2. **Shot list & order** — 4–6 screenshots max. For each: the intended viewer takeaway, the seed, the moment (e.g. "frame where muzzle flash + 2 explosions + popup all coexist"), and which file name it should keep/replace.
 3. **Staging hooks** — if a shot needs a bespoke moment (boss with 1/4 health for drama, victory with all 9 lanterns lit), specify the `?shot=` name and the deterministic autopilot script for it.
 4. **Thumbnail test** — for each proposed shot, a short paragraph describing what survives at 480 px and what must be removed if it doesn't.
-5. **Do not touch** `.makefun/owner.json`; screenshots must remain 1280×720 JPEG < 350 KB each.
+5. **Do not touch** `.makefun/owner.json`; screenshots must remain 1280×720 JPEG < 262144 bytes each (the cap enforced by main.ts and the submission validator), with margin to spare.
 
 ## Acceptance criteria
 
