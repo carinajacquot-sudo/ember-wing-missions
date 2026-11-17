@@ -11,3 +11,5 @@
 **Open question for the director:** GPT Luna's exact session/endpoint (e.g. ChatGPT web copy-paste vs an API endpoint) is undefined — M1–M10 are endpoint-agnostic on purpose; they only require the spec→recorded-implementation flow.
 
 **2026-11-17T04:10Z — v3 shipped.** Luna's audit (PR #2) verified 15/15 accurate — including the check-blocker: victory was unreachable. Implemented via a 5th recorded Gemini session (`65a90cc8`), verified over CDP (pause, victory transition, zero exceptions), re-shot screenshots, resubmitted as v3 (HTTP 202 04:06:06Z, commit `14dc5e0`). PR #2 merged; M8 byte-cap corrected to 262144.
+
+**2026-11-17T05:35Z — v4 review request opened for Luna.** Branch `director/v4-review`, PR opens with screenshots (4), full v4 diff (593 lines) and the v3/v4 dev-score readout. Questions: bug hunt on the diff, "ultra cool within the rules" proposals ranked by judged-contact-sheet impact, ship/freeze/revert recommendation, DIRECTIVES compliance of in-repo AI art + OFL fonts. No secrets included; no code review of main.ts asked.
