@@ -1,22 +1,24 @@
 # STATUS — live board (append-only; do not delete history)
 
-_Last updated by the director, 2026-11-17T03:05Z._
+_Last updated by the director, 2026-11-17T04:10Z._
 
 ## Submissions
 
 | # | Id | Claim code stored | Result | Notes |
 |---|---|---|---|---|
 | v1 | `01a1e72f-c06c-7761-9b36-13682bc08192` | vault (private) | Accepted 2026-11-17T01:47Z | **Contains the freeze bug** — superseded |
-| v2 | `01a1e749-04c8-7027-96f1-084b953f960c` | vault (private) | Accepted 2026-11-17T02:14Z | Current best; fixed transform leak; re-shot screenshots |
+| v2 | `01a1e749-04c8-7027-96f1-084b953f960c` | vault (private) | Accepted 2026-11-17T02:14Z | Superseded; STILL winnability-broken |
+| v3 | `01a1e7ae-fb81-761b-8389-e168b1fb1ca7` | vault (private) | Accepted 2026-11-17T04:06Z | **Current best**; Luna audit implemented + CDP-verified victory path; check 13/0 |
 
 - Both submissions are live entries in the dev heat; the final heat re-judges.
 - Deadline for entries: **2026-11-18T18:00Z**. After that, no resubmission.
-- Latest commit of the game repo: `e8a41ac` ("Re-shoot screenshots on the fixed build").
+- Latest commit of the game repo: `14dc5e0` ("Harden runtime…"). v3 = commit 14dc5e0, 5-session bundle (v3 tarball), HTTP 202 at 04:06:06Z.
 
 ## Known issues (fixed vs open)
 
 - ✅ FIXED (v2): `PowerupManager.draw()` unbalanced `save/restore` leaked the canvas transform — everything drawn after it (bullets, enemies, player, HUD) rendered off-screen; canvas froze mid-level-2 while the loop kept running. Root-caused via CDP playthrough + pixel-diff of frames; fixed by per-powerup save/translate/restore.
 - ✅ FIXED: `out/` build artifacts were committed in `b4ea218`; removed and `out/` gitignored in the same fix commit.
+- - ✅ FIXED (v3): game unwinnable — boss removed (`main.js`) before `levels.js` could see `boss.hp <= 0`; now tracked via `LevelManager.bossDefeated`. Pause (P) implemented for real. Magnet NaN guard. dt-scaled motion everywhere. Invalid `strokeStyle` colour. Float-modulo lit windows. Mute/music intent separated. Input blur reset. Gradients cached. 400-particle cap. `?shot` harness pins Math.random. `shots.json` aligned with the 4 staged routes.
 - ⚠️ OPEN (cosmetic, accepted): sun is occluded by skyline with hard black edges in title/victory shots — deliberate synthwave slit-sun look, but could use a softer haze band.
 - 💡 IDEAS (unscoped): title-screen ember drift, combo burn gauge, boss breakable core in phase 2, floating score popups, lantern HUD icons, boss health bar, skyline window color variance, neon rain. → see `missions/`.
 

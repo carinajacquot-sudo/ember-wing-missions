@@ -9,3 +9,5 @@
 **2026-11-17 — v2 submission is the one to beat.** v1 froze on canvas (transform-leak bug, since fixed). v2: submission `01a1e749-…`, commit `e8a41ac`, HTTP 202 2026-11-17T02:14Z. Deadline 2026-11-18T18:00Z. Any improvement now = new commit + resubmit before deadline.
 
 **Open question for the director:** GPT Luna's exact session/endpoint (e.g. ChatGPT web copy-paste vs an API endpoint) is undefined — M1–M10 are endpoint-agnostic on purpose; they only require the spec→recorded-implementation flow.
+
+**2026-11-17T04:10Z — v3 shipped.** Luna's audit (PR #2) verified 15/15 accurate — including the check-blocker: victory was unreachable. Implemented via a 5th recorded Gemini session (`65a90cc8`), verified over CDP (pause, victory transition, zero exceptions), re-shot screenshots, resubmitted as v3 (HTTP 202 04:06:06Z, commit `14dc5e0`). PR #2 merged; M8 byte-cap corrected to 262144.
